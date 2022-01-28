@@ -1,0 +1,1 @@
+(New-Object System.Net.WebClient).DownloadString('https://api.ipify.org?format=json') | ConvertFrom-Json

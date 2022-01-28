@@ -13,9 +13,35 @@ echo '#'
 echo '# Install Chocolatey'
 echo '#'
 echo '###########################################################################################'
+
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://community.chocolatey.org/install.ps1'))
 
+winget install PowerShell -s winget
+winget upgrade PowerShell -s winget
+winget install powertoys -s windget
 
+winget install -e --id Microsoft.VisualStudioCode
+winget install -e --id OpenJS.Nodejs
+winget install -e --id Microsoft.AzureCLI
+
+winget install -e --id Microsoft.AzureDataStudio
+winget install -e --id Microsoft.AzureFunctionsCoreTools
+winget install -e --id Microsoft.Bicep
+winget install --id Microsoft.officedeploymenttool
+
+winget install -e --id Microsoft.PowerBI
+winget install -e --id Microsoft.VisualStudio.Enterprise
+winget install -e --id Microsoft.WindowsTerminal
+
+choco install powershell-core -y
+choco install brave -y
+choco install notepadplusplus -y 
+choco install 7zip -y
+choco install git -y
+choco install powertoys -y
+choco install clickie -y
+choco install autohotkey -y
+winget install -e --id Microsoft.AzureCLI
 echo '###########################################################################################'
 echo '#'
 echo '# Install Hugo'
@@ -61,7 +87,7 @@ echo '# Install pandoc'
 echo '#'
 echo '###########################################################################################'
 choco install pandoc
-
+winget install -e --id JohnMacFarlane.Pandoc
 
 echo '###########################################################################################'
 choco install docker-desktop
