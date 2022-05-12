@@ -17,6 +17,8 @@ choco install powertoys -y
 choco install clickie -y
 choco install autohotkey -y
 
+choco install poshgit -y
+
 echo '-------------------------------------------------------------------------------------------'
 echo '-'
 echo '- Install Hugo'
