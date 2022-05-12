@@ -14,10 +14,18 @@ choco install notepadplusplus -y
 choco install 7zip -y
 choco install git -y
 choco install powertoys -y
-choco install clickie -y
+choco install clickie -y 
 choco install autohotkey -y
 
+echo '-------------------------------------------------------------------------------------------'
+echo '-'
+echo '- Poshgit'
+echo '-'
+echo '-------------------------------------------------------------------------------------------'
+
 choco install poshgit -y
+Import-Module posh-git
+Add-PoshGitToProfile 
 
 echo '-------------------------------------------------------------------------------------------'
 echo '-'
