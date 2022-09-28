@@ -1,9 +1,7 @@
 
-
-
+winget install -e --id Git.Git
 winget install PowerShell -s winget
-winget upgrade PowerShell -s winget
-winget install powertoys -s windget
+winget install powertoys -s winget
 
 winget install -e --id Microsoft.VisualStudioCode
 winget install -e --id OpenJS.Nodejs
