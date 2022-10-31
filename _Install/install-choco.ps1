@@ -12,12 +12,14 @@ choco install powershell-core -y
 choco install visualstudiocode -y
 choco install notepadplusplus -y 
 choco install 7zip -y
-choco install powertoys -y
 choco install git -y
+
+
+
 choco install clickie -y 
 choco install autohotkey -y
-
 choco install brave -y
+choco install powertoys -y
 
 echo '-------------------------------------------------------------------------------------------'
 echo '-'
