@@ -27,9 +27,11 @@ echo '- Poshgit'
 echo '-'
 echo '-------------------------------------------------------------------------------------------'
 
-choco install poshgit -y
-Import-Module posh-git
-Add-PoshGitToProfile 
+choco install oh-my-posh -y
+
+New-Item -Path $PROFILE -Type File -Force
+notepad $PROFILE
+
 
 echo '-------------------------------------------------------------------------------------------'
 echo '-'
