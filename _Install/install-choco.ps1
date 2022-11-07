@@ -13,8 +13,8 @@ choco install visualstudiocode -y
 choco install notepadplusplus -y 
 choco install 7zip -y
 choco install git -y
-
-
+choco install winmerge -y
+choco install beyondcompare -y
 
 choco install clickie -y 
 choco install autohotkey -y
