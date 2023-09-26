@@ -16,7 +16,7 @@ winget install -e --id Microsoft.PowerBI
 winget install -e --id Microsoft.VisualStudio.Enterprise
 winget install -e --id Microsoft.WindowsTerminal
 
-
+winget install -e --id OpenJS.NodeJS
 
 
 winget install --id Git.Git -e --source winget
