@@ -11,6 +11,7 @@ winget install -e --id Microsoft.AzureDataStudio
 winget install -e --id Microsoft.AzureFunctionsCoreTools
 winget install -e --id Microsoft.Bicep
 winget install --id Microsoft.officedeploymenttool
+winget install -e --id Notepad++.Notepad++
 
 winget install -e --id Microsoft.PowerBI
 winget install -e --id Microsoft.VisualStudio.Enterprise
