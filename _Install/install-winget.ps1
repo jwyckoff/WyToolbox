@@ -17,6 +17,7 @@ winget install -e --id Microsoft.PowerBI
 winget install -e --id Microsoft.VisualStudio.Enterprise
 winget install -e --id Microsoft.WindowsTerminal
 
-
+winget install -e --id GitHub.cli
+winget install -e --id GitHub.GitHubDesktop
 
 winget install --id Git.Git -e --source winget
