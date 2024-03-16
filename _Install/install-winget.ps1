@@ -4,7 +4,7 @@ winget install PowerShell -s winget
 winget install powertoys -s winget
 
 winget install -e --id Microsoft.VisualStudioCode
-winget install -e --id OpenJS.Nodejs
+winget install -e --id OpenJS.NodeJS
 winget install -e --id Microsoft.AzureCLI
 
 winget install -e --id Microsoft.AzureDataStudio
@@ -17,7 +17,6 @@ winget install -e --id Microsoft.PowerBI
 winget install -e --id Microsoft.VisualStudio.Enterprise
 winget install -e --id Microsoft.WindowsTerminal
 
-winget install -e --id OpenJS.NodeJS
 
 
 winget install --id Git.Git -e --source winget
