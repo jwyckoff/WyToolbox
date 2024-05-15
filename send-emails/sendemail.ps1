@@ -1,82 +1,86 @@
-# $User = "jason@thewyckoffs.net"
+# $user = "jason@thewyckoffs.net"
 # $temp = 'zhteizuasjlecsdy' # jason@thewyckoffs.net 
 
-$User = "jwyckoff@gmail.com"
-$temp = 'thgsclebgjnxdeop' # jwyckoff@gmail.com 
+$user = "jwyckoff@outlook.com"
+$temp = 'ikzbxfrarhcvlaax' 
 
-$SMTPServer = "smtp.gmail.com"
-$SMTPPort = "587"
+$smtpServer = "smtp-mail.outlook.com"
+$smtpPort = "587"
 $newLine = "`r`n"
 $PWord = ConvertTo-SecureString -String $temp -AsPlainText -Force
-$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $User, $PWord
+$Credential = New-Object -TypeName System.Management.Automation.PSCredential -ArgumentList $user, $PWord
+$Body = ""
+# create a string array of domains
+$domains = @(
+    "wyckoffgenealogy.org",
+    "jasonwyckoff.com",  
+    "wyckoff.io",  
+    "wyazure.com",  
+    "konnicklalonde.com")
 
-$domains = 
-    "wyckoffgenealogy.org," + `
-    "jasonwyckoff.com," + `
-    "mileswyckoff.com," + `
-    "wyckoff.io," + `
-    "wyazure.com," + `
-    "streamvalley.org," + `
-    "ellawyckoff.com," + `
-    "konnicklalonde.com"
+# "mileswyckoff.com",  
+# "ellawyckoff.com",  
 
-$nameAtDomain = "temp"
+$nameAtDomains = @(
+    "jason")
+#"temp", 
 
 ##############################################################################
 
-$emails = ""
-Foreach ($domain in $domains -split ',') { 
+$emailArray = @()
 
-
-    $emails = $emails + "$nameAtDomain@$domain,"
+foreach ($name in $nameAtDomains) {
+    foreach ($domain in $domains) {
+        $emailArray += "$name@$domain"
+    }
 }
 
-
-echo $emails
-##############################################################################
-
+Write-Host "Total emails: $($emailArray.Length)"
 $i = 1
-$emailArray = $emails -split ','
-$From = "jwyckoff@gmail.com"
-$TodayDate = Get-Date -Format MM/dd
+$From = $user
+$TodayDate = Get-Date -Format "yyyyMMddHHmmss"
 
-Foreach ($To in $emailArray) { 
+$emailsToSend = @()
+$bodyContents = @()
 
-    $Subject = "Test {0} {1} ({2}/{3})" -f `
-        $TodayDate, `
-        $To, `
-        $i, `
-        $emailArray.Length
+foreach ($To in $emailArray) { 
 
-    $Body = $Body + $Subject + $newLine
-    $i = $i + 1
+    $Subject = "$To ($i/$($emailArray.Length)) -- Test $TodayDate "
+    # add new custom object to array
+    $emailsToSend += [PSCustomObject]@{
+        To      = $To
+        Subject = $Subject 
+    }
+
+    $bodyContents += [PSCustomObject]@{
+        Num = $i
+        To  = $To
+    }
+    $i++
 }
 
-$i = 1
+# build a an html table for the body, with the contents of the bodyContents array
+$Body = "<table>"
+$Body += "<tr><th>Num</th><th>To</th></tr>"
+foreach ($bodyContent in $bodyContents) {
+    $Body += "<tr><td>$($bodyContent.Num)</td><td>$($bodyContent.To)</td></tr>"
+}
+$Body += "</table>"
 
-Foreach ($To in $emailArray) { 
+
+
+Foreach ($emailToSend in $emailsToSend) { 
     echo "##############################################################################"
     echo "#"
-    echo "# $To"
+    echo "# $($emailToSend.To)"
     echo "#"
     echo "##############################################################################"
     echo ""
 
-    $Subject = "Test {0} {1} ({2}/{3})" -f `
-        $TodayDate, `
-        $To, `
-        $i, `
-        $emailArray.Length
-    
-    $Summary = $Summary + $Subject + $newLine
 
-    Send-MailMessage -From $From -to $To -Subject $Subject -Body `
-        $Body -SmtpServer $SMTPServer -port $SMTPPort -UseSsl -Credential $Credential
+    Send-MailMessage -From $From -to $($emailToSend.To) -Subject $($emailToSend.Subject) -Body $Body -smtpServer $smtpServer -port $smtpPort -UseSsl -Credential $Credential -BodyAsHtml
 
     $i = $i + 1
 }
-
-echo $Body
-
 
 ##############################################################################
